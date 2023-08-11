@@ -26,15 +26,6 @@ const SignIn = ({ setSignin }: any) => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  // const handleLogin = (e: any) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   const formData: User = { email, password, name, fname };
-  //   return userService.register(formData).then(() => {
-  //     setIsLoading(false);
-  //     router.push("/account/login");
-  //   });
-  // };
   const handleLogin = (e: any) => {
     e.preventDefault();
     setIsLoading(true);

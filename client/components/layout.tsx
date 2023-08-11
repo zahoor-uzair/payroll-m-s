@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Typography from "@mui/material/Typography";
+import React, { useState, useEffect } from "react";
+
 import { Box } from "@mui/material";
 import ResponsiveAppBar from "./appbar";
 import Sidebar from "./sidebar";
@@ -7,8 +7,12 @@ import Sidebar from "./sidebar";
 // Define the sidebar items
 
 const Layout = ({ children }: any) => {
-  const [sidebar, setSidebar] = useState(false);
-
+  const [sidebar, setSidebar] = useState(localStorage.getItem("sidebarWidth"));
+  console.log(sidebar);
+  useEffect(() => {
+    // setSidebar(localStorage.getItem("sidebarWidth"));
+    setSidebar(localStorage.getItem("sidebarWidth"));
+  }, [sidebar]);
   return (
     <>
       <ResponsiveAppBar sidebar={sidebar} setSidebar={setSidebar} />
@@ -16,9 +20,9 @@ const Layout = ({ children }: any) => {
         {sidebar && (
           <Box
             sx={{
-              width: 250,
+              width: 260,
               height: "calc(100vh - 64px)",
-              overflow: "auto",
+              overflow: "verticle",
               backgroundColor: "#263238",
               color: "#ffffff",
             }}

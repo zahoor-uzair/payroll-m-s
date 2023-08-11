@@ -1,54 +1,19 @@
-import { useState, useEffect } from "react";
 import Head from "next/head";
-import { Button, Typography } from "@mui/material";
+import React from "react";
+import Linechart from "@/components/dashboard-components/areachart";
+import Barchart from "@/components/dashboard-components/barchart";
 import Layout from "@/components/layout";
-import BasicTable from "@/components/employee-components/listing";
-import ModalForm from "@/components/employee-components/form-modal";
-
-import {
-  getEmployee,
-  Employee,
-  AddEmployee,
-  deleteEmployee,
-  editEmployee,
-} from "@/components/employee-components/api";
-
-export default function Home() {
-  const [addModalOpen, setAddModalOpen] = useState(false);
-
-  const [employee, setEmployee] = useState<Employee[]>([]);
-  const [error, setError] = useState<string>(""); // State to store error messages
-
-  useEffect(() => {
-    getEmployee(setEmployee, setError);
-  }, []);
-
-  const handleAddEmployee = async (formData: Employee) => {
-    try {
-      await AddEmployee(formData);
-      setAddModalOpen(false);
-      getEmployee(setEmployee, setError);
-    } catch (error: any) {
-      setError("Error adding employee: " + error.message);
-    }
-  };
-
-  const handleDeleteEmployee = async (id: string) => {
-    try {
-      await deleteEmployee(id);
-      // After successfully deleting the employee, fetch the updated employee list
-      getEmployee(setEmployee, setError);
-    } catch (error: any) {
-      setError("Error deleting employee: " + error.message);
-    }
-  };
-  if (!employee) {
-    return (
-      <>
-        <Typography variant="h4">Loading...</Typography>
-      </>
-    );
-  }
+import { Box } from "@mui/material";
+import Card from "@/components/dashboard-components/card";
+import PeopleIcon from "@mui/icons-material/People";
+const items = [
+  { caption: "Abc", figure: "20", title: "Employees", icon: <PeopleIcon /> },
+  { caption: "Abc", figure: "20", title: "Employees", icon: <PeopleIcon /> },
+  { caption: "Abc", figure: "20", title: "Employees", icon: <PeopleIcon /> },
+  { caption: "Abc", figure: "20", title: "Employees", icon: <PeopleIcon /> },
+  // Add more items as needed
+];
+const Dashboard = () => {
   return (
     <>
       <Head>
@@ -59,30 +24,35 @@ export default function Home() {
       </Head>
       <main>
         <Layout>
-          {addModalOpen && (
-            <ModalForm onClose={setAddModalOpen} onSubmit={handleAddEmployee} />
-          )}
-
-          <Button
+          <Box
             sx={{
-              marginBottom: 2,
+              display: "flex",
+              justifyContent: "space-between",
+              paddingY: 1,
             }}
-            variant="contained"
-            color="primary"
-            onClick={() => setAddModalOpen(true)}
           >
-            Add Employee
-          </Button>
-
-          <BasicTable
-            employee={employee}
-            error={error}
-            onDelete={handleDeleteEmployee}
-            setError={setError}
-            setEmployee={setEmployee}
-          />
+            {items.map((item, index) => (
+              <Card
+                key={index}
+                caption={item.caption}
+                figure={item.figure}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
+          </Box>
+          <Box sx={{ display: "flex" }}>
+            <Box sx={{ width: "50%", marginRight: 2 }}>
+              <Linechart />
+            </Box>
+            <Box sx={{ width: "49%" }}>
+              <Barchart />
+            </Box>
+          </Box>
         </Layout>
       </main>
     </>
   );
-}
+};
+
+export default Dashboard;

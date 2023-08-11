@@ -9,10 +9,10 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import PeopleIcon from "@mui/icons-material/People";
 
 const sidebarItems = [
-  { text: "Employee", link: "/", icon: <PeopleIcon /> },
   { text: "Dashboard", link: "/", icon: <DashboardIcon /> },
-  { text: "Reports", link: "/", icon: <AssessmentIcon /> },
-  { text: "Settings", link: "/", icon: <SettingsIcon /> },
+  { text: "Employee", link: "/employee", icon: <PeopleIcon /> },
+  { text: "Reports", link: "/reports", icon: <AssessmentIcon /> },
+  { text: "Settings", link: "/setting", icon: <SettingsIcon /> },
 ];
 const Sidebar = () => {
   const router = useRouter();

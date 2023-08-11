@@ -56,9 +56,18 @@ export default function ResponsiveAppBar({ sidebar, setSidebar }: any) {
             sx={{ mr: 2 }}
           >
             {sidebar ? (
-              <CloseIcon onClick={() => setSidebar(!sidebar)} />
+              <CloseIcon
+                onClick={() => {
+                  localStorage.removeItem("sidebarWidth");
+                  setSidebar();
+                }}
+              />
             ) : (
-              <MenuIcon onClick={() => setSidebar(!sidebar)} />
+              <MenuIcon
+                onClick={() => {
+                  setSidebar(localStorage.setItem("sidebarWidth", "true"));
+                }}
+              />
             )}
           </IconButton>
 
