@@ -1,0 +1,10 @@
+/* ProgressBar.module.css */
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 10px;
+  background-color: #007bff; /* Change this to your desired color */
+  z-index: 9999;
+  transition: width 0.3s ease;
+}
