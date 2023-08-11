@@ -7,7 +7,7 @@ The Payroll MS core product is split between two apps: the `client` and the `ser
 ### Installing
 
 1. Install `client`: `cd client` then run `npm Install`
-2. Install `graph-api`: `cd server` then run `npm Install`
+2. Install `server`: `cd server` then run `npm Install`
 
 ## Environment Variables
 
