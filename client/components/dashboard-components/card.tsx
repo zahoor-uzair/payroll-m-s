@@ -5,20 +5,20 @@ const Card = ({ title, figure, caption, icon }: any) => {
   return (
     <MuiCard
       sx={{
-        width: 250,
+        width: "100%",
         height: 170,
         display: "flex",
         flexDirection: "column",
         margin: 1,
         borderRadius: 2,
         boxShadow: 2,
-        backgroundColor: "primary.main",
+        backgroundColor: "secondary.main",
       }}
     >
       <CardContent>
-        <Icon sx={{ color: "secondary.main", marginBottom: 0 }}>{icon}</Icon>
+        <Icon sx={{ color: "primary.main", marginBottom: 0 }}>{icon}</Icon>
         <Typography
-          sx={{ marginBottom: 0, color: "secondary.main" }}
+          sx={{ marginBottom: 0, color: "primary.main" }}
           variant="h5"
         >
           {title}
@@ -30,7 +30,7 @@ const Card = ({ title, figure, caption, icon }: any) => {
             fontSize: "2.5rem",
             fontWeight: "bold",
             marginBottom: 0,
-            color: "secondary.main",
+            color: "primary.main",
           }}
         >
           {figure}

@@ -1,5 +1,6 @@
 :root {
-  --bg-color: #cbcaa5;
+  /* --bg-color: #cbcaa5; */
+  --bg-color: #fff;
 }
 * {
   padding: 0;
@@ -31,12 +32,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334d50;
+  /* background: #334d50; */
+  background: #373b44;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(58, 88, 92) 0;
+  /* background: rgb(58, 88, 92) 0; */
+  background: #494f5c;
 }
 ::-webkit-scrollbar:horizontal {
   height: 8px;

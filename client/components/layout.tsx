@@ -23,7 +23,8 @@ const Layout = ({ children }: any) => {
               width: 260,
               height: "calc(100vh - 64px)",
               overflow: "verticle",
-              backgroundColor: "#263238",
+              // backgroundColor: "#263238",
+              backgroundColor: "#0f0c29",
               color: "#ffffff",
             }}
           >

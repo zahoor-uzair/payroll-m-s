@@ -4,6 +4,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { RadioGroup, FormControlLabel, Radio } from "@mui/material";
 const stl = {
   marginY: 1,
 };
@@ -14,6 +15,7 @@ const ModalForm = ({ onClose, onSubmit, prefill }: any) => {
   const [age, setAge] = useState(prefill?.age || "");
   const [phoneNo, setPhoneNo] = useState(prefill?.phoneNo || "");
   const [salary, setSalary] = useState(prefill?.salary || "");
+  // const [gender, setGender] = useState(prefill?.gender || "");
   const handleClose = () => {
     onClose(false);
   };
@@ -111,6 +113,20 @@ const ModalForm = ({ onClose, onSubmit, prefill }: any) => {
             sx={stl}
             size="small"
           />
+          {/* <RadioGroup
+            aria-label="Gender"
+            name="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <FormControlLabel value="male" control={<Radio />} label="Male" />
+            <FormControlLabel
+              value="female"
+              control={<Radio />}
+              label="Female"
+            />
+          </RadioGroup> */}
+
           <Button
             type="submit"
             variant="contained"

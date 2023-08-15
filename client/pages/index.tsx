@@ -3,7 +3,7 @@ import React from "react";
 import Linechart from "@/components/dashboard-components/areachart";
 import Barchart from "@/components/dashboard-components/barchart";
 import Layout from "@/components/layout";
-import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import Card from "@/components/dashboard-components/card";
 import PeopleIcon from "@mui/icons-material/People";
 const items = [
@@ -24,31 +24,26 @@ const Dashboard = () => {
       </Head>
       <main>
         <Layout>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              paddingY: 1,
-            }}
-          >
+          <Grid container spacing={2} sx={{ padding: 2 }}>
             {items.map((item, index) => (
-              <Card
-                key={index}
-                caption={item.caption}
-                figure={item.figure}
-                title={item.title}
-                icon={item.icon}
-              />
+              <Grid key={index} lg={3} md={6} sm={6} xs={12}>
+                <Card
+                  caption={item.caption}
+                  figure={item.figure}
+                  title={item.title}
+                  icon={item.icon}
+                />
+              </Grid>
             ))}
-          </Box>
-          <Box sx={{ display: "flex" }}>
-            <Box sx={{ width: "50%", marginRight: 2 }}>
-              <Linechart />
-            </Box>
-            <Box sx={{ width: "49%" }}>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6} lg={7}>
               <Barchart />
-            </Box>
-          </Box>
+            </Grid>
+            <Grid item xs={12} md={6} lg={5}>
+              <Linechart />
+            </Grid>
+          </Grid>
         </Layout>
       </main>
     </>
