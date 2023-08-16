@@ -18,7 +18,18 @@ import { Employee, editEmployee, getEmployee } from "./api";
 import { Alert, AlertTitle, Typography } from "@mui/material";
 import ModalForm from "./form-modal";
 import { useRouter } from "next/router";
-
+const headerCells = [
+  { label: "Name" },
+  { label: "Father Name", key: "fname" },
+  { label: "Email", key: "email" },
+  { label: "Age", key: "age" },
+  { label: "Phone No.", key: "phoneNo" },
+  { label: "Gender", key: "gender" },
+  { label: "Department", key: "department" },
+  { label: "Salary", key: "salary" },
+  { label: "Created At", key: "createdAt" },
+  { label: "Actions" },
+];
 export default function BasicTable({
   employee,
   error,
@@ -42,6 +53,7 @@ export default function BasicTable({
     try {
       await editEmployee(data, editId);
       // After successfully deleting the employee, fetch the updated employee list
+      setEditModalOpen(false);
       getEmployee(setEmployee, setError);
     } catch (error: any) {
       setError(("Error deleting employee: " + error.message) as unknown);
@@ -69,6 +81,12 @@ export default function BasicTable({
 
     return `${day}-${month}-${year}`;
   };
+  const capitalize = (str: string) => {
+    if (str?.length === 0) {
+      return "";
+    }
+    return str?.charAt(0).toUpperCase() + str?.slice(1);
+  };
   if (error) {
     return (
       <Alert severity="error">
@@ -94,55 +112,28 @@ export default function BasicTable({
           prefill={edit}
         />
       )}
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ height: "85vh" }}>
         <Table sx={{ minWidth: 650 }} aria-label="custom table">
-          <TableHead>
+          <TableHead
+            sx={{
+              position: "sticky",
+              top: 0,
+              backgroundColor: "primary.main",
+            }}
+          >
             <TableRow>
-              <TableCell sx={{ fontWeight: "bold", fontSize: "1rem" }}>
-                Name
-              </TableCell>
-              <TableCell
-                align="left"
-                sx={{ fontWeight: "bold", fontSize: "1rem" }}
-              >
-                Father Name
-              </TableCell>
-              <TableCell
-                align="left"
-                sx={{ fontWeight: "bold", fontSize: "1rem" }}
-              >
-                Email
-              </TableCell>
-              <TableCell
-                align="left"
-                sx={{ fontWeight: "bold", fontSize: "1rem" }}
-              >
-                Age
-              </TableCell>
-              <TableCell
-                align="left"
-                sx={{ fontWeight: "bold", fontSize: "1rem" }}
-              >
-                Phone No.
-              </TableCell>
-              <TableCell
-                align="left"
-                sx={{ fontWeight: "bold", fontSize: "1rem" }}
-              >
-                Salary
-              </TableCell>
-              <TableCell
-                align="left"
-                sx={{ fontWeight: "bold", fontSize: "1rem" }}
-              >
-                Created At
-              </TableCell>
-              <TableCell
-                align="left"
-                sx={{ fontWeight: "bold", fontSize: "1rem" }}
-              >
-                Actions
-              </TableCell>
+              {headerCells.map((cell) => (
+                <TableCell
+                  key={cell.label}
+                  sx={{
+                    fontWeight: "bold",
+                    color: "secondary.main",
+                  }}
+                  align={cell.key === "Actions" ? "left" : "center"}
+                >
+                  {cell.label}
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -158,16 +149,18 @@ export default function BasicTable({
                 <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left">{row.age}</TableCell>
                 <TableCell align="left">{row.phoneNo}</TableCell>
+                <TableCell align="left">{capitalize(row.gender)}</TableCell>
+                <TableCell align="left">{capitalize(row.department)}</TableCell>
                 <TableCell align="left">{row.salary}</TableCell>
                 <TableCell align="left">{formatDate(row.createdAt)}</TableCell>
                 <TableCell align="left">
                   <DeleteIcon
-                    onClick={() => handleDelete(row._id)} // Call the onDelete handler with the employee data
+                    onClick={() => handleDelete(row._id)}
                     style={{ cursor: "pointer", color: "red" }}
                   />
                   <EditIcon
                     color="primary"
-                    onClick={() => handleEdit(row)} // Call the onDelete handler with the employee data
+                    onClick={() => handleEdit(row)}
                     style={{ cursor: "pointer", marginLeft: 8 }}
                   />
                 </TableCell>

@@ -11,7 +11,7 @@ const getEmployees = async (req, res) => {
 
 
 const addEmployee = (req, res) => {
-    let { name, fname, email, phoneNo, age, salary } = req.body;
+    let { name, fname, email, phoneNo, age, salary, gender, department } = req.body;
     console.log(req.body)
     const newEmployee = new Employee({
         name: name,
@@ -20,6 +20,8 @@ const addEmployee = (req, res) => {
         phoneNo: phoneNo,
         age: parseInt(age),
         salary: parseInt(salary),
+        gender: gender,
+        department: department,
         createdAt: Date.now()
     })
     newEmployee

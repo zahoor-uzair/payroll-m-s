@@ -7,10 +7,12 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PeopleIcon from "@mui/icons-material/People";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 
 const sidebarItems = [
   { text: "Dashboard", link: "/", icon: <DashboardIcon /> },
   { text: "Employee", link: "/employee", icon: <PeopleIcon /> },
+  { text: "Attendance", link: "/attendance", icon: <AppRegistrationIcon /> },
   { text: "Reports", link: "/reports", icon: <AssessmentIcon /> },
   { text: "Settings", link: "/setting", icon: <SettingsIcon /> },
 ];

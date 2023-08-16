@@ -24,9 +24,9 @@ const Dashboard = () => {
       </Head>
       <main>
         <Layout>
-          <Grid container spacing={2} sx={{ padding: 2 }}>
+          <Grid container spacing={2} sx={{ padding: 1 }}>
             {items.map((item, index) => (
-              <Grid key={index} lg={3} md={6} sm={6} xs={12}>
+              <Grid item key={index} lg={3} md={6} sm={6} xs={12}>
                 <Card
                   caption={item.caption}
                   figure={item.figure}

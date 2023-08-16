@@ -8,6 +8,7 @@ const auth = require("./middleware/auth");
 const employeeRoute = require('./routes/employeeRoute')
 const registerRoute = require('./routes/registerRoute')
 const loginRoute = require('./routes/loginRoute')
+const checkInRoute = require("./routes/checkinRoute")
 
 const port = process.env.PORT
 const storage = multer.diskStorage({
@@ -32,6 +33,7 @@ app.use('/uploads', express.static('assets/uploads'));
 app.use('/api/v1/login', loginRoute)
 app.use('/api/v1/register', upload.single('image'), registerRoute)
 app.use('/api/v1/employee', auth, employeeRoute)
+app.use('/api/v1/checkin', auth, checkInRoute)
 
 
 app.listen(port, () => console.log(`Server listening on  http://localhost:${port}`))

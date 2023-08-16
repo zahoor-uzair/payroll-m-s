@@ -8,6 +8,8 @@ const employeeSchema = new Schema({
     phoneNo: String,
     age: Number,
     salary: Number,
+    gender: String,
+    department: String,
     createdAt: Date,
 
 });

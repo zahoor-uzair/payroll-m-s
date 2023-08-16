@@ -7,6 +7,8 @@ export interface Employee {
   email: string;
   age: number;
   phoneNo: string;
+  gender: string;
+  department: string;
   salary: number;
   createdAt: Date;
 }
@@ -49,6 +51,7 @@ export const getEmployee = async (
 };
 
 export const AddEmployee = async (formData: Employee) => {
+  console.log(formData);
   try {
     const accessToken = getAccessToken();
     const headers = {

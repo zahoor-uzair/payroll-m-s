@@ -9,6 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Avatar from "@mui/material/Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Menu, MenuItem } from "@mui/material";
+import Image from "next/image";
 
 const settings = [
   { name: "Profile", link: "/" },
@@ -40,7 +41,6 @@ export default function ResponsiveAppBar({ sidebar, setSidebar }: any) {
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser)?.imageurl;
       setUser(parsedUser);
-      console.log(user);
     }
   }, []);
 
@@ -70,6 +70,19 @@ export default function ResponsiveAppBar({ sidebar, setSidebar }: any) {
               />
             )}
           </IconButton>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "120px",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            {/* <Image src={"/favicon.png"} alt="logo" width={30} height={30} /> */}
+            <Typography variant="h5" sx={{ fontWeight: "700" }}>
+              Payroll MS
+            </Typography>
+          </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
